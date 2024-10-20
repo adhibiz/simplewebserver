@@ -22,6 +22,7 @@ Testing the webserver
 ## PROGRAM:
 ```
 from http.server import HTTPServer, BaseHTTPRequestHandler
+
 content = """
 <!DOCTYPE html>
 <html>
@@ -29,32 +30,39 @@ content = """
 <title>My webserver</title>
 </head>
 <body>
-<h1><u>Languages used iun Web Development</u><h1>
+<h1><u>Languages used in Web Development</u></h1>
 <ul>
 <li>HTML</li>
 <li>CSS</li>
 <li>JavaScript</li>
 <li>Bootstrap</li>
+</ul>
 </body>
 </html>
 """
+
 class myhandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        print("request received")
+        print("Request received")
         self.send_response(200)
-        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
         self.wfile.write(content.encode())
-server_address = ('',80)
-httpd = HTTPServer(server_address,myhandler)
-print("my webserver is running...")
+
+# Try changing to port 8080 or any other port if needed
+server_address = ('', 8080)
+httpd = HTTPServer(server_address, myhandler)
+print("My webserver is running...")
 httpd.serve_forever()
+
 ```
 
 
 ## OUTPUT:
-![output](./out1.png)
-![output](./out2.png)
+![image](https://github.com/user-attachments/assets/aaf1df5c-b1a5-4fa6-b58e-7656f8c7f1bf)
+
+![image](https://github.com/user-attachments/assets/3dd6004a-7151-434e-8019-f32f0bde764f)
+
 
 
 ## RESULT:
